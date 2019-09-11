@@ -12,13 +12,13 @@ import com.udacity.mylibrary.DisplayJokeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Joker mJoker;
+//    Joker mJoker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mJoker = new Joker();
+//        mJoker = new Joker();
     }
 
 
@@ -49,8 +49,16 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     public void launchDisplayJokeActivity(View view) {
-        Intent intent = new Intent(this, DisplayJokeActivity.class);
-        intent.putExtra(getString(R.string.param_joke), mJoker.getJoke());
-        startActivity(intent);
+//        Intent intent = new Intent(this, DisplayJokeActivity.class);
+//        intent.putExtra(getString(R.string.param_joke), mJoker.getJoke());
+//        startActivity(intent);
+        new EndpointsAsyncTask() {
+            @Override
+            protected void onPostExecute(String output) {
+                Intent intent = new Intent(getApplicationContext(), DisplayJokeActivity.class);
+                intent.putExtra(getString(R.string.param_joke), output);
+                startActivity(intent);
+            }
+        }.execute();
     }
 }
