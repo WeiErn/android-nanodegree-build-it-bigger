@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.udacity.jokes.Joker;
 import com.udacity.mylibrary.DisplayJokeActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,14 +43,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    public void tellJoke(View view) {
-//        Toast.makeText(this, mJoker.getJoke(), Toast.LENGTH_SHORT).show();
-//    }
-
     public void launchDisplayJokeActivity(View view) {
-//        Intent intent = new Intent(this, DisplayJokeActivity.class);
-//        intent.putExtra(getString(R.string.param_joke), mJoker.getJoke());
-//        startActivity(intent);
         new EndpointsAsyncTask() {
             @Override
             protected void onPostExecute(String output) {
